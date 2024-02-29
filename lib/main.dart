@@ -35,31 +35,45 @@ class _HomePageState extends State<HomePage> {
       drawer: Drawer(
         child: ListView(
           children: [
+            DrawerHeader(
+              child: Center(
+                child: CircleAvatar(
+                  backgroundImage: AssetImage('images/ofppt.png'),
+                  radius: 50,
+                  ),
+              ) 
+            ),
             ...Constants.exercices.asMap().entries.map((e) {
-              return Column(
-                children: [
-                  ListTile(
-                      leading: Text(
-                        '${e.key} - ',
-                        style:
-                            TextStyle(fontSize: 23.0, color: Colors.redAccent),
-                      ),
-                      onTap: (){
-                        setState(() {
-                          currentExercice = e.value;
-                        });
-                      },
-                      title: Text(e.value.title,
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    ListTile(
+                        leading: Text(
+                          '${e.key + 1} - ',
                           style:
-                              TextStyle(color: Colors.black, fontSize: 15.0))),
-                  Divider(height: 2, color: Colors.black54, thickness: 2)
-                ],
+                              TextStyle(fontSize: 23.0, color: Colors.redAccent),
+                        ),
+                        onTap: (){
+                          setState(() {
+                            currentExercice = e.value;
+                          });
+                        },
+                        title: Text(e.value.title,
+                            style:
+                                TextStyle(color: Colors.black, fontSize: 15.0))),
+                    Divider(height: 2, color: Colors.black54, thickness: 2)
+                  ],
+                ),
               );
             })
           ],
         ),
       ),
-      body: MainSection(exercice: currentExercice),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: MainSection(exercice: currentExercice),
+      ),
     );
   }
 }

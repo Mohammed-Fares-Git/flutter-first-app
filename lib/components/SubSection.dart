@@ -15,7 +15,7 @@ class SubSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('${this.index} - ${this.title}.'),
+        Text('${this.index} - ${this.title}.', style: TextStyle(fontSize: 20, color: Color.fromARGB(255, 27, 93, 29)),),
         ...solutions.asMap().entries.map((e) {
           return Center(
             child: Column(
